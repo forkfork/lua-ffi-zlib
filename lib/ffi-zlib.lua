@@ -95,7 +95,7 @@ unsigned long crc32_combine(unsigned long, unsigned long, long);
 
 ]])
 
-local zlib = ffi.load(ffi.os == "Windows" and "zlib1" or "z")
+local zlib = ffi.load(ffi.os == "Windows" and "zlib1" or ffi.os == "OSX" and "z" or "/lib64/libz.so.1")
 _M.zlib = zlib
 
 -- Default to 16k output buffer
